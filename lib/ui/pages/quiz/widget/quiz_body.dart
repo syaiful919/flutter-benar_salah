@@ -1,4 +1,5 @@
 import 'package:benar_salah/core/model/quiz.dart';
+import 'package:benar_salah/ui/pages/quiz_result/quiz_result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:benar_salah/ui/widget/base_button.dart';
 
@@ -7,10 +8,14 @@ class QuizBody extends StatelessWidget {
 
   void _selectAnswer(BuildContext context, bool isCorrect) {
     // TODO: add action
+
+    _goToResultPage(context);
   }
 
   void _goToResultPage(BuildContext context) {
-    // TODO: navigate to QuizResultPage
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute<void>(builder: (_) => const QuizResultPage()),
+    );
   }
 
   @override
