@@ -1,3 +1,4 @@
+import 'package:benar_salah/ui/state/quiz_state_scope.dart';
 import 'package:flutter/material.dart';
 
 class QuizCount extends StatelessWidget {
@@ -5,9 +6,8 @@ class QuizCount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: dummy data, update later
-    const index = 0;
-    const total = 5;
+    final index = QuizStateScope.of(context).currentIndex;
+    final total = QuizStateScope.of(context).selectedQuiz.length;
     return Container(
       alignment: Alignment.center,
       margin: const EdgeInsets.only(right: 10),
