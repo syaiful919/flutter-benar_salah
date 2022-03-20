@@ -3,6 +3,8 @@
 // TODO: 5. Provide APIs to modify the data
 
 import 'package:benar_salah/core/service/quiz_service.dart';
+import 'package:benar_salah/ui/state/quiz_state.dart';
+import 'package:benar_salah/ui/state/quiz_state_scope.dart';
 import 'package:flutter/material.dart';
 
 class QuizStateWidget extends StatefulWidget {
@@ -24,8 +26,18 @@ class QuizStateWidget extends StatefulWidget {
 }
 
 class _QuizStateWidgetState extends State<QuizStateWidget> {
+  QuizState _data = QuizState(
+    allQuiz: [],
+    selectedQuiz: [],
+    answerMap: {},
+    currentIndex: 0,
+  );
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return QuizStateScope(
+      data: _data,
+      child: widget.child,
+    );
   }
 }
