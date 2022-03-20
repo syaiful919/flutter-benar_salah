@@ -1,3 +1,4 @@
+import 'package:benar_salah/ui/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,6 +10,10 @@ class QuizApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Benar atau Salah',
+      home: HomePage(),
+    );
   }
 }
