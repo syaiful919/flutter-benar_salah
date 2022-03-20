@@ -10,6 +10,7 @@ class QuizApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: 6. Insert QuizStateWidget into the widget tree
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Benar atau Salah',
