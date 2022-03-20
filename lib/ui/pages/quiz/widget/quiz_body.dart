@@ -1,5 +1,6 @@
-import 'package:benar_salah/core/model/quiz.dart';
 import 'package:benar_salah/ui/pages/quiz_result/quiz_result_page.dart';
+import 'package:benar_salah/ui/state/quiz_state_scope.dart';
+import 'package:benar_salah/ui/state/quiz_state_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:benar_salah/ui/widget/base_button.dart';
 
@@ -7,9 +8,12 @@ class QuizBody extends StatelessWidget {
   const QuizBody({Key? key}) : super(key: key);
 
   void _selectAnswer(BuildContext context, bool isCorrect) {
-    // TODO: add action
+    QuizStateWidget.of(context).selectAnswer(isCorrect);
 
-    _goToResultPage(context);
+    final index = QuizStateScope.of(context).currentIndex;
+    final total = QuizStateScope.of(context).selectedQuiz.length;
+
+    if (index == total - 1) _goToResultPage(context);
   }
 
   void _goToResultPage(BuildContext context) {
@@ -20,12 +24,8 @@ class QuizBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: dummy data, update later
-    const quiz = Quiz(
-      id: 1,
-      question: "Angka 1 termasuk bilangan prima",
-      isTrue: false,
-    );
+    final index = QuizStateScope.of(context).currentIndex;
+    final quiz = QuizStateScope.of(context).selectedQuiz[index];
 
     return SizedBox(
       width: MediaQuery.of(context).size.width,
