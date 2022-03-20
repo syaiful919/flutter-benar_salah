@@ -1,3 +1,4 @@
+import 'package:benar_salah/ui/pages/quiz/quiz_page.dart';
 import 'package:flutter/material.dart';
 import 'package:benar_salah/ui/widget/base_button.dart';
 
@@ -5,7 +6,9 @@ class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   void _goToQuizPage(BuildContext context) {
-    // TODO: push to QuizPage
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(builder: (_) => const QuizPage()),
+    );
   }
 
   @override

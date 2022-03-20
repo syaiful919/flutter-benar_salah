@@ -3,7 +3,7 @@ class Quiz {
   final String question;
   final bool isTrue;
 
-  Quiz({
+  const Quiz({
     required this.id,
     required this.question,
     required this.isTrue,
