@@ -1,4 +1,6 @@
 import 'package:benar_salah/ui/pages/quiz/quiz_page.dart';
+import 'package:benar_salah/ui/state/quiz_state_scope.dart';
+import 'package:benar_salah/ui/state/quiz_state_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:benar_salah/ui/widget/base_button.dart';
 
@@ -6,7 +8,7 @@ class QuizResultPage extends StatelessWidget {
   const QuizResultPage({Key? key}) : super(key: key);
 
   void _resetQuiz(BuildContext context) {
-    // TODO: add action
+    QuizStateWidget.of(context).resetQuiz();
   }
 
   Future<bool> _onWillPop(BuildContext context) async {
@@ -20,7 +22,7 @@ class QuizResultPage extends StatelessWidget {
   }
 
   void _playAgain(BuildContext context) {
-    // TODO: add action
+    QuizStateWidget.of(context).resetAnswer();
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute<void>(builder: (_) => const QuizPage()),
@@ -29,8 +31,9 @@ class QuizResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: dummy data, remove later
-    const correctAnswerCount = 4;
+    final answerMap = QuizStateScope.of(context).answerMap;
+    final correctAnswerCount =
+        answerMap.entries.where((answer) => answer.value).length;
 
     return WillPopScope(
       onWillPop: () => _onWillPop(context),
